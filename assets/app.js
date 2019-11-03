@@ -8,3 +8,6 @@ if (username == "Phil") {
 
 
 console.log("Welcome back!");
+
+var nameLength = [...username];
+console.log(`Your name is ${nameLength.length} letters long.`);
