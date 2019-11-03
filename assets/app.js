@@ -17,6 +17,7 @@ const dayStart = '07:30';
 const dayEnd = '17:00';
 
 function scheduleMeeting(startTime, durationMinutes) {
+
     let endTime = startTime + durationMinutes;
     if (startTime >= dayStart && (endTime) <= dayEnd) {
         console.log('Hooray! Meeting can be scheduled.');
