@@ -28,4 +28,5 @@ function scheduleMeeting(startTime, durationMinutes) {
 
 };
 
+// Create functionality to coerce startTime and dayEnd to numbers, add meeting duration to startTime, and compare that to dayEnd value
 scheduleMeeting('16:30', 60);
