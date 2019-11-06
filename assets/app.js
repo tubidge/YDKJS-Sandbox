@@ -18,28 +18,34 @@ console.log(`~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~`);
 const dayStart = '07:30';
 const dayEnd = '17:00';
 
-function scheduleMeeting(startTime, durationMinutes) {
-    // Convert dayStart, dayEnd, and startTime into comparable numbers
-    var startNums = dayStart.split(':');
-    var startHour = Number(startNums[0]);
-    var startMin = Number(startNums[1]);
-    console.log(startHour, startMin);
+// Function to convert a time string "HH:MM" to a number of minutes
+function convertTime(timeString) {
+    let timeNums = timeString.split(':');
+    for (var x = 0; x < 2; x++) {
+        timeNums[x] = Number(timeNums[x]);
+    };
+    let timeValue = (timeNums[0] * 60) + timeNums[1];
+    // console.log(`Converted time in minutes: ${timeValue}`)
+    return timeValue;
+};
 
-    var endNums = dayEnd.split(':');
-    var endHour = Number(endNums[0]);
-    var endMin = Number(endNums[1]);
-    console.log(endHour, endMin);
-
-
-    // let endTime = startTime + durationMinutes;
-    // if (startTime >= dayStart && (endTime) <= dayEnd) {
-    //     console.log('Hooray! Meeting can be scheduled.');
-    // } else {
-    //     console.log("Sorry, we aren't available then.");
-    // }
-    // console.log(`Meeting end time: ${endTime}`);
+function scheduleMeeting(meetStart, meetDuration) {
+    // use converTime for dayStart, dayEnd, meetStart
+    let meetStartMin = convertTime(meetStart);
+    let dayStartMin = convertTime(dayStart);
+    let dayEndMin = convertTime(dayEnd);
+    // determine meeting end time
+    let meetEndMin = meetStartMin + meetDuration;
+    console.log(`Day Start: ${dayStartMin}, Day End: ${dayEndMin}`);
+    console.log(`Meet Start: ${meetStartMin}, Meet End: ${meetEndMin}`);
+    // if proposed meeting start AND end fit within schedule, success!
+    if (meetStartMin >= dayStartMin && meetEndMin <= dayEndMin) {
+        console.log('Your meeting has been booked!');
+    } else {
+        console.log(`Sorry, our hours are from ${dayStart} - ${dayEnd}`);
+    };
 
 };
 
-// Create functionality to coerce startTime and dayEnd to numbers, add meeting duration to startTime, and compare that to dayEnd value
+
 scheduleMeeting('16:30', 60);
