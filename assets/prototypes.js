@@ -24,6 +24,9 @@ var slotMachine = {
     reels: [
         // this slot machine needs 3 separate reels
         // hint: Object.create(..)
+        Object.create(reel),
+        Object.create(reel),
+        Object.create(reel),
     ],
     spin() {
         this.reels.forEach(function spinReel(reel) {
