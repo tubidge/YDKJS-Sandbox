@@ -1,12 +1,14 @@
 function range(start, end) {
-    var rangeArr = [];
+    start = Number(start);
+    end = Number(end);
+    let rangeArr = [];
     if (start === end) {
         rangeArr.push(start);
         console.log(rangeArr);
     } else if (start > end) {
         console.log(`Sorry, that's not a valid range (start, end)`);
     } else {
-        for (var x = start; x < (end + 1); x++) {
+        for (let x = start; x <= end; x++) {
             rangeArr.push(x);
         };
         console.log(rangeArr);
