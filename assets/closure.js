@@ -4,10 +4,9 @@ function range(start, end) {
     //     rangeArr.push(start);
     //     console.log(rangeArr);
     // } else if (start > end) {
-    //     console.log(`Sorry, that's not a valid range (start, end)`);
+    //     console.log(`Sorry, that's not a valid range. --> (start, end)`);
     // } 
     if (end === undefined) {
-        console.log(`You didn't provide an ending value.`);
         return function getEnd(end) {
             return getRange(start, end);
         };
@@ -17,6 +16,7 @@ function range(start, end) {
     };
 
     function getRange(start, end) {
+        console.log(arguments);
         var rangeArr = [];
         for (let x = start; x <= end; x++) {
             rangeArr.push(x);
@@ -32,7 +32,7 @@ range(3, 0);
 range(5);
 
 var start3 = range(3);
-
+// because range(3) resolves to getEnd(end), we can pass in our ending number 
 start3(3);
 start3(8);
 start3(0);
